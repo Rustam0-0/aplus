@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}A plus!
+			{% endblock %}
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="apple-touch-icon" sizes="180x180" href="/assets/favico_io/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/assets/favico_io/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/assets/favico_io/favicon-16x16.png">
+		<link rel="manifest" href="/assets/favico_io/site.webmanifest">
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="/assets/slick-1.8.1/slick/slick.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="/assets/slick-1.8.1/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="/assets/slick-1.8.1/slick/slick-theme.css"/>
+       
+        {#    icons #}
+		<link href="https://static.insales-cdn.com/assets/1/7151/850927/1639401906/fonts.css" rel="stylesheet" type="text/css">
+		<link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" crossorigin="anonymous" rel="stylesheet"/>
+		<script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+		<link href="/assets/style.css" type="text/css" rel="stylesheet">
+
+		<script src="https://cdn.tiny.cloud/1/f7nrvb0b2s521028a10roouemfhy288eiu43bb2vnnrcqelq/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+		<script>
+			tinymce.init({
+selector: 'textarea',
+menubar: true,
+plugins: 'code',
+plugins: 'lists',
+toolbar: 'numlist bullist'
+});
+		</script>
+	</head>
+	<body>
+		<header>
+			<div class="header-content d-flex flex-wrap justify-content-between">
+				<div class=" col-xl-4 col-lg-4 col-md-6 col-sm-7 col-7">
+					<a href="/" title="A plus">
+						<img class="img-fluid header_logo" src="/assets/images/header/Aplus.png">
+					</a>
+				</div>
+				{# <div class="col-xl-8 col-lg-8 col-md-6 col-sm-5 col-12 py-3">
+												            <button 
+												                onclick="window.location.href='{{ path('promo_list') }}'"
+												                title="LAISEZ VOTRE QUESTION" class="button_promo">
+												                un clic pour réparer votre pc
+												            </button>
+												        </div> #}
+			</div>
+			<div class="">
+				<button {# onclick="window.location.href='{{ path('promo_list') }}'" #} title="LAISEZ VOTRE QUESTION" class="button_promo">
+					un clic pour réparer votre pc
+				</button>
+			</div>
+
+		</header>
+		{% block body %}{% endblock %}
+
+
+        {# // <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> #}
+        
+
+<script type="text/javascript">
+    // $('.slider').slick({
+    //     vertical: true,
+    //     verticalSwiping: true,
+    //     slidesToShow: 3,
+    //     slidesToScroll: 1,
+    //     autoplay: true,
+    //     autoplaySpeed: 2000,
+    //     responsive: [
+    //         {
+    //             breakpoint: 760,
+    //             settings: {
+    //                 slidesToShow: 2,
+    //                 slidesToScroll: 2,
+    //                 vertical: false,
+    //                 verticalSwiping: false,
+    //             }
+    //         },
+    //         {
+    //             breakpoint: 1000,
+    //             settings: {
+    //                 slidesToShow: 3,
+    //                 slidesToScroll: 2,
+    //                 vertical: false,
+    //                 verticalSwiping: false,
+    //             }
+    //         }
+    //     ]
+    // });
+    $('.multiple-items').slick({
+      infinite: true,
+      dots: true,
+      slidesToShow: 3,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      slidesToScroll: 1
+    });
+</script>
+	</body>
+</html>

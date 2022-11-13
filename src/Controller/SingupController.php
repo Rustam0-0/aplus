@@ -19,35 +19,27 @@ class SingupController extends AbstractController
      */
     public function index(ClientRepository $client, Request $request, EntityManagerInterface $em): Response
     {
-        $form = $this->createForm(ClientType::class);
+        $cli = new Client();
+        $form = $this->createForm(ClientType::class, $cli);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $task = $form->getData();
-
-            $cli = new Client();
-            $cli->setName($task["name"]);
-            $cli->setSurname($task["surname"]);
-            $cli->setTel($task["tel"]);
-            $cli->setAddress($task["address"]);
-            $cli->setMessage($task["message"]);
+        if ($form->isSubmitted()) {
             $cli->setDateAdd(new \DateTime());
-
+            if($form->isValid()){
             $em->persist($cli);
             $em->flush();
 
             // ... perform some action, such as saving the task to the database
-            // $this->addFlash('success', 'Vous êtes bien inscrit. Veuillez vous êntrer avec vos Email et mot de passe!');
+            $this->addFlash('success', 'Merci de nous avoir contacté!');
             return $this->redirectToRoute('home');
+            }else{
+                $this->addFlash('danger', 'Veuillez correctement remplir tout les champs!');
+                return $this->redirectToRoute('home');
+            }
         }
 
         return $this->render('singup/index.html.twig', [
             'form' => $form->createView()
         ]);
-
-        //     return $this->render('singup/index.html.twig', [
-        //         'controller_name' => 'SingupController',
-        //     ]);
     }
 }

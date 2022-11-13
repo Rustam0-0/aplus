@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Service{% endblock %}
+
+{% block body %}
+    <h1>Edit Service</h1>
+
+    {# {{ include('service/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_service_index') }}">back to list</a>
+
+    {{ include('service/_delete_form.html.twig') }} #}
+
+
+    <img class="img-fluid pb-4" width="100px" src="/assets/images/SERVICE/{{ service.picture }}">
+    <img class="img-fluid pb-4" width="100px" src="/assets/images/SERVICE/{{ service.picture2 }}">
+    <img class="img-fluid pb-4" width="100px" src="/assets/images/SERVICE/{{ service.picture3 }}">
+    <img class="img-fluid pb-4" width="100px" src="/assets/images/SERVICE/{{ service.picture4 }}">
+    <img class="img-fluid pb-4" width="100px" src="/assets/images/SERVICE/{{ service.picture5 }}">
+
+        {{ include('service/_form.html.twig', {'button_label': 'Update'}) }}
+
+        <div class="container justify-content-between d-flex flex-wrap py-2">
+            <a class="btn btn-secondary" href="{{ path('app_service_index') }}">Retour</a>
+            <form method="post" action="{{ path('app_service_delete', {'id': service.id}) }}" onsubmit="return confirm('Êtes-vous sûr de bien vouloir supprimer cet élément?');">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ service.id) }}">
+                <button class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+{% endblock %}

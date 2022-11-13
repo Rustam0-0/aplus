@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service index{% endblock %}
+
+{% block body %}
+    <h1>Service index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                {# <th>Date_add</th>
+                <th>Date_update</th> #}
+                {# <th>Picture</th>
+                <th>Picture2</th>
+                <th>Picture3</th>
+                <th>Picture4</th>
+                <th>Picture5</th> #}
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for service in services %}
+            <tr>
+                <td>{{ service.id }}</td>
+                <td>{{ service.name }}</td>
+                <td>{{ service.description }}</td>
+                <td>{{ service.price }}</td>
+                {# <td>{{ service.dateAdd ? service.dateAdd|date('Y-m-d') : '' }}</td>
+                <td>{{ service.dateUpdate ? service.dateUpdate|date('Y-m-d') : '' }}</td> #}
+                {# <td>{{ service.picture }}</td>
+                <td>{{ service.picture2 }}</td>
+                <td>{{ service.picture3 }}</td>
+                <td>{{ service.picture4 }}</td>
+                <td>{{ service.picture5 }}</td> #}
+                <td>
+                    <a href="{{ path('app_service_show', {'id': service.id}) }}">show</a>
+                    <a href="{{ path('app_service_edit', {'id': service.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_service_new') }}">Create new</a>
+{% endblock %}
